@@ -20,6 +20,7 @@ plank.addEventListener("click", function (event) {
     state.placedObjects.push(newWeight);
     drawBox(newWeight);
     calculateBalance();
+    saveData();
 })
 
 function drawBox(obj) {
@@ -34,15 +35,23 @@ function drawBox(obj) {
 function calculateBalance() {
     let leftTorque = 0;
     let rightTorque = 0;
+    let leftWeightSum = 0;
+    let rightWeightSum = 0;
+
     state.placedObjects.forEach(obj => {
         if (obj.position < 0) {
             leftTorque += obj.weight * Math.abs(obj.position);
+            leftWeightSum += obj.weight;
         } else {
             rightTorque += obj.weight * obj.position;
+            rightWeightSum += obj.weight;
         }
     });
-    let angle = (rightTorque - leftTorque) / 100
-    angle = Math.max(-30, Math.min(30, angle));
+
+    document.getElementById("left-weight").textContent = leftWeightSum;
+    document.getElementById("right-weight").textContent = rightWeightSum;
+
+    const angle = Math.max(-30, Math.min(30, (rightTorque - leftTorque) / 10));
     plank.style.transform = `rotate(${angle}deg)`;
 }
 
