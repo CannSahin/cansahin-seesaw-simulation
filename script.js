@@ -19,15 +19,19 @@ plank.addEventListener("click", function (event) {
         position: distance
     };
     state.placedObjects.push(newWeight);
-    drawBox(newWeight);
+    drawBox(newWeight, true);
     calculateBalance();
     saveData();
 })
 
-function drawBox(obj) {
+function drawBox(obj, isNew = false) {
     const div = document.createElement("div");
     div.innerText = obj.weight + 'kg';
     div.className = 'weight-item';
+
+    if (isNew) {
+        div.classList.add('falling');
+    }
     const size = 30 + (obj.weight - 1) * 5;
     div.style.width = size + 'px';
     div.style.height = size + 'px';
