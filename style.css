@@ -1,1 +1,20 @@
+#seesaw-plank{
+    width:400px;
+    height:20px;
+    background-color:#d89f71;
+    position:absolute;
+    bottom: 80px;
+    transform-origin: 50% 100%;
+    transition: transform 0.5s;
+}
 
+.pivot{
+    width:0;
+    height:0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom:80px solid gray;
+    position:absolute;
+    bottom: 0;
+    left: 260px;
+}
