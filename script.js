@@ -10,9 +10,13 @@ let state = {
     placedObjects: []
 };
 
-plank.addEventListener("click", function (event) {
-    const center = 300;
-    const distance = event.offsetX - center;
+const wrapper = document.querySelector(".seesaw-wrapper");
+
+wrapper.addEventListener("click", function (event) {
+    if (event.target !== plank) return;
+    const clickX = event.clientX;
+    const screenCenter = window.innerWidth / 2;
+    const distance = clickX - screenCenter;
     const randomWeight = Math.floor(Math.random() * 10) + 1;
     const newWeight = {
         weight: randomWeight,
