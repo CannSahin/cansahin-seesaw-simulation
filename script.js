@@ -13,8 +13,9 @@ let state = {
 plank.addEventListener("click", function (event) {
     const center = 300;
     const distance = event.offsetX - center;
+    const randomWeight = Math.floor(Math.random() * 10) + 1;
     const newWeight = {
-        weight: 5,
+        weight: randomWeight,
         position: distance
     };
     state.placedObjects.push(newWeight);
@@ -27,6 +28,15 @@ function drawBox(obj) {
     const div = document.createElement("div");
     div.innerText = obj.weight + 'kg';
     div.className = 'weight-item';
+    const size = 30 + (obj.weight - 1) * 5;
+    div.style.width = size + 'px';
+    div.style.height = size + 'px';
+    const colors = [
+        "#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e",
+        "#f1c40f", "#e67e22", "#e74c3c", "#c0392b", "#8e44ad"
+    ];
+    div.style.backgroundColor = colors[obj.weight - 1];
+
     const leftPos = obj.position + 300;
     div.style.left = leftPos + 'px';
     plank.appendChild(div);
