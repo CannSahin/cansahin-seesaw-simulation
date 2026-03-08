@@ -77,4 +77,13 @@ function loadData() {
     }
 }
 
+const resetBtn = document.getElementById("reset-btn");
+resetBtn.addEventListener("click", function () {
+    state.placedObjects = [];
+    const boxes = document.querySelectorAll('.weight-item');
+    boxes.forEach(box => box.remove());
+    calculateBalance();
+    saveData();
+});
+
 loadData();

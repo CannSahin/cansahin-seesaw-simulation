@@ -76,3 +76,11 @@ body {
     user-select: none;
     pointer-events: none;
 }
+
+.btn-danger {
+    background-color: var(--clr-btn-danger);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+}
