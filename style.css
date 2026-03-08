@@ -21,9 +21,10 @@
     transition: transform 0.8s ease-in-out;
     background-image: repeating-linear-gradient(90deg,
             transparent,
-            transparent 49px,
-            rgba(0, 0, 0, 0.3) 49px,
-            rgba(0, 0, 0, 0.3) 50px);
+            transparent 48px,
+            rgba(0, 0, 0, 0.4) 48px,
+            rgba(0, 0, 0, 0.4) 50px);
+    background-position: center;
 }
 
 .seesaw-wrapper {

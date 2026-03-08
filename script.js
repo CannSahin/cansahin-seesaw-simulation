@@ -7,25 +7,47 @@ const CONFIG = {
 const plank = document.getElementById("seesaw-plank");
 
 let state = {
-    placedObjects: []
+    placedObjects: [],
+    nextWeight: null
 };
 
 const wrapper = document.querySelector(".seesaw-wrapper");
+const previewBox = document.getElementById("next-weight-box");
+
+function generateNextWeight() {
+    const randomWeight = Math.floor(Math.random() * 10) + 1;
+    state.nextWeight = { weight: randomWeight, position: 0 };
+    previewBox.textContent = randomWeight;
+}
+
+function applyStyleToBox(div, weight) {
+    const size = 30 + (weight - 1) * 5;
+    div.style.width = size + 'px';
+    div.style.height = size + 'px';
+    const colors = [
+        "#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e",
+        "#f1c40f", "#e67e22", "#e74c3c", "#c0392b", "#8e44ad"
+    ];
+    div.style.backgroundColor = colors[weight - 1];
+}
 
 wrapper.addEventListener("click", function (event) {
     if (event.target !== plank) return;
     const clickX = event.clientX;
     const screenCenter = window.innerWidth / 2;
     const distance = clickX - screenCenter;
-    const randomWeight = Math.floor(Math.random() * 10) + 1;
+
     const newWeight = {
-        weight: randomWeight,
+        weight: state.nextWeight.weight,
         position: distance
     };
+
     state.placedObjects.push(newWeight);
     drawBox(newWeight, true);
     calculateBalance();
     saveData();
+
+    generateNextWeight(); // Generate the *next* next weight for the preview
 })
 
 function drawBox(obj, isNew = false) {
@@ -36,14 +58,8 @@ function drawBox(obj, isNew = false) {
     if (isNew) {
         div.classList.add('falling');
     }
-    const size = 30 + (obj.weight - 1) * 5;
-    div.style.width = size + 'px';
-    div.style.height = size + 'px';
-    const colors = [
-        "#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e",
-        "#f1c40f", "#e67e22", "#e74c3c", "#c0392b", "#8e44ad"
-    ];
-    div.style.backgroundColor = colors[obj.weight - 1];
+
+    applyStyleToBox(div, obj.weight);
 
     const leftPos = obj.position + 300;
     div.style.left = leftPos + 'px';
@@ -95,3 +111,6 @@ resetBtn.addEventListener("click", function () {
 });
 
 loadData();
+if (!state.nextWeight) {
+    generateNextWeight();
+}
