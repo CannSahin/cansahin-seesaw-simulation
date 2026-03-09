@@ -1,0 +1,7 @@
+# IDE klasörleri / IDE folders
+.idea/
+.vscode/
+# İşletim sistemi dosyaları / OS files
+.DS_Store
+Thumbs.db
+
