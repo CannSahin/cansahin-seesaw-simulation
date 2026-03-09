@@ -13,6 +13,8 @@ let state = {
 
 const wrapper = document.querySelector(".seesaw-wrapper");
 const previewBox = document.getElementById("next-weight-box");
+const wooshSound = new Audio("sound/swing-woosh.wav");
+const landSound = new Audio("sound/pots_and_cans_49.wav");
 
 function generateNextWeight() {
     const randomWeight = Math.floor(Math.random() * 10) + 1;
@@ -25,8 +27,8 @@ function applyStyleToBox(div, weight) {
     div.style.width = size + 'px';
     div.style.height = size + 'px';
     const colors = [
-        "#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e",
-        "#f1c40f", "#e67e22", "#e74c3c", "#c0392b", "#8e44ad"
+        "#a38e31ff", "#023b1aff", "#3498db", "#18dfadff", "#bf10ebff",
+        "#f1c40f", "#e67e22", "#e61700ff", "#c0392b", "#e739c2ff"
     ];
     div.style.backgroundColor = colors[weight - 1];
 }
@@ -43,6 +45,8 @@ wrapper.addEventListener("click", function (event) {
     };
 
     state.placedObjects.push(newWeight);
+    wooshSound.currentTime = 0;
+    wooshSound.play();
     drawBox(newWeight, true);
     calculateBalance();
     saveData();
@@ -56,6 +60,10 @@ function drawBox(obj, isNew = false) {
 
     if (isNew) {
         div.classList.add('falling');
+        div.addEventListener('animationend', function () {
+            landSound.currentTime = 0;
+            landSound.play();
+        });
     }
 
     applyStyleToBox(div, obj.weight);

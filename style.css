@@ -25,9 +25,10 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    margin-top: -35px;
     margin-bottom: 50px;
     height: 120px;
-    gap: 15px;
+    gap: 40px;
     position: relative;
 }
 
@@ -35,11 +36,11 @@
 #right-stat,
 #next-stat,
 #tilt-stat {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     border: 3px solid var(--clr-black-plank-border);
-    background-color: white;
+    background-color: rgb(57, 65, 87);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-wrap: wrap;
@@ -48,12 +49,11 @@
     text-align: center;
     font-weight: bold;
     font-size: 13px;
+    color: white;
     padding: 10px;
     box-sizing: border-box;
 }
 
-/* Yay (Arch) Efekti: Her daireyi farklı Y pozisyonuna ve açıya alarak at etrafındaki kaz gibi */
-/* En dıştaki daireler aşağıya düşer, ortadakiler yukarıda kalır */
 #left-stat {
     transform: translateY(30px) rotate(-15deg);
 }
@@ -86,6 +86,7 @@
 
 #tilt-stat span {
     color: #e74c3c;
+
 }
 
 
