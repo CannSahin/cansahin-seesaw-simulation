@@ -46,8 +46,7 @@ wrapper.addEventListener("click", function (event) {
     drawBox(newWeight, true);
     calculateBalance();
     saveData();
-
-    generateNextWeight(); // Generate the *next* next weight for the preview
+    generateNextWeight();
 })
 
 function drawBox(obj, isNew = false) {
@@ -86,6 +85,7 @@ function calculateBalance() {
     document.getElementById("right-weight").textContent = rightWeightSum;
 
     const angle = Math.max(-30, Math.min(30, (rightTorque - leftTorque) / 10));
+    document.getElementById("tilt-angle").textContent = angle;
     plank.style.transform = `rotate(${angle}deg)`;
 }
 
