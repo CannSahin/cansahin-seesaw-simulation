@@ -1,9 +1,3 @@
-const CONFIG = {
-    PLANK_WIDTH: 600,
-    PLANK_CENTER: 300,
-    MAX_ANGLE: 30
-};
-
 const plank = document.getElementById("seesaw-plank");
 
 let state = {
