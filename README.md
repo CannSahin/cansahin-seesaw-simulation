@@ -6,6 +6,7 @@ An interactive seesaw simulation built with pure JavaScript, HTML, and CSS, focu
 
 You can play the simulation directly here: [https://cannsahin.github.io/cansahin-seesaw-simulation/](https://cannsahin.github.io/cansahin-seesaw-simulation/)
 Or you can download the project and open the `index.html` file in any browser.
+You can watch the technical walkthrough of the project here:https://youtu.be/hyMJxbb1btw
 
 ## 🕹️ How to Use
 
@@ -94,3 +95,4 @@ On reload, every weight must be redrawn and the entire torque/angle state must b
 
 It was a long and challenging journey for me.I learned so many new things such as physics simulation, sound timing, CSS animations, and localStorage. 
 Every bug pushed me to understand the browser deeper. I'm proud of what this small project became. I hope you will like the project and enjoy it in every part like me!
+
